@@ -119,6 +119,17 @@ const worker = () => {
 			console.log('error:', error);
 		}
 	});
+	
+	app.get('/telegram/bot/message', async (req, res) => {
+		console.log('body:', req.query);
+		try {
+			res.status(200).send('OK');
+			rpcClient.send('rpc-telegram-queue', {req: req.body, method: 'input_message'});
+		} catch (error) {
+			console.log('error:', error);
+		}
+	});
+	
 	app.post('/telegram/bot/message-old', async (req, res) => {
 		console.log('body:', req.body);
 		console.log('query:', req.query);
