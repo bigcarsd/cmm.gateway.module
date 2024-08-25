@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors'); // Импортируем cors
 const { Connection } = require("rabbitmq-client");
 
+
 const worker = () => {
 	const app = express();
 	
