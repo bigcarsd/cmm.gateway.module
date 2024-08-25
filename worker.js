@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors'); // Импортируем cors
 const { Connection } = require("rabbitmq-client");
 
-
 const worker = () => {
 	const app = express();
 	
@@ -112,6 +111,14 @@ const worker = () => {
 		}
 	});
 	app.post('/telegram/bot/message', async (req, res) => {
+		try {
+			res.status(200).send('OK');
+			rpcClient.send('rpc-telegram-queue', req.body);
+		} catch (error) {
+			console.log('error:', error);
+		}
+	});
+	app.post('/telegram/bot/message-old', async (req, res) => {
 		console.log('body:', req.body);
 		console.log('query:', req.query);
 		console.log('params:', req.params);
