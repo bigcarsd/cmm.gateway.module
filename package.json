@@ -1,0 +1,22 @@
+{
+  "name": "cmm.gateway.module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start_module": "yarn install && yarn service",
+    "service": "node Gateway.service.js",
+    "start_dev": "nodemon Gateway.service.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "amqplib": "^0.10.4",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "rabbitmq-client": "^4.6.0"
+  }
+}
