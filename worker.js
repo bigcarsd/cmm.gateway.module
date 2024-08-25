@@ -113,7 +113,7 @@ const worker = () => {
 	app.post('/telegram/bot/message', async (req, res) => {
 		try {
 			res.status(200).send('OK');
-			rpcClient.send('rpc-telegram-queue', {req, method: 'input_message'});
+			rpcClient.send('rpc-telegram-queue', {req: req.body, method: 'input_message'});
 		} catch (error) {
 			console.log('error:', error);
 		}
