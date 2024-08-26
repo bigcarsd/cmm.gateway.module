@@ -18,6 +18,12 @@ const worker = () => {
 	const rabbit = new Connection(process.env.POST_RABBITMQ_URL);
 	const port = process.env.PORT || 30200;
 	const rpcClient = rabbit.createRPCClient({ confirm: true });
+	
+	
+	app.get('/', (req, res) => {
+		// Редирект на https://app.lafian.ru
+		res.redirect('https://app.lafian.ru');
+	});
 	app.get('/test/fnc/1', async (req, res) => {
 		console.log('/test/fnc', 'srp-function');
 		const response = await rpcClient.send('srp-function', {method: 'fnc1'});
